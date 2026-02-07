@@ -1,0 +1,74 @@
+1. Overview
+CNN (Convolutional Neural Network) is used for real-time object detection.
+It processes images through a fixed signal-processing pipeline to extract features and classify objects.
+Heavy computations like convolution are accelerated using FPGA, while lighter tasks are handled by ARM.
+
+2. Input Image
+Example: 32 × 32 grayscale image
+Each pixel is a value between 0–255
+Total input values: 1024
+Smaller image size → faster processing
+
+3. Convolution Layer
+Extracts features like edges, corners, textures
+Uses small filters (e.g., 3 × 3)
+Steps:
+Place filter on image
+Multiply pixel values with filter
+Sum results to get one output value
+Slide filter and repeat
+Multiple filters detect different patterns:
+Horizontal edges
+Vertical edges
+Curves
+Convolution is mathematically parallel, ideal for FPGA acceleration
+
+4. ReLU (Activation Function)
+Function:
+If value < 0 → output = 0
+Else → output = value
+Purpose:
+Removes negative noise
+Introduces non-linearity
+Low computation → handled by ARM
+
+
+5. Pooling Layer
+Reduces spatial size of feature maps
+Example: 2 × 2 max pooling
+Keeps only the maximum value
+Example size reduction:
+32 × 32 → 16 × 16
+Benefits:
+Faster computation
+Less memory usage
+
+
+6. Deeper Convolution Layers
+Input is no longer raw pixels
+Operates on features of features
+Pattern learning:
+Layer 1 → simple patterns
+Layer 2 → complex patterns
+
+7. Flattening
+Converts 3D data (height × width × channels)
+Into one long 1D feature vector
+
+8. Fully Connected Layer
+Takes feature vector
+Multiplies with weights
+Produces class scores
+
+9. Softmax Layer
+Converts scores into probabilities
+Example:
+Class 0 → 65%
+Class 1 → 25%
+Provides prediction confidence
+
+10. Final Output
+Predicted class
+Confidence value
+11. Overall Flow (One-Line Summary)
+A CNN processes an input image through convolution, ReLU, and pooling layers to extract features, reduces dimensionality, flattens the data, and uses fully connected and softmax layers to produce a class prediction with confidence, with convolution accelerated on FPGA for performance.
