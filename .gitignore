@@ -20,3 +20,34 @@ rad.json
 *.flf
 #Test results file
 TestResults.xml
+# Compiled binaries
+*.o
+*.out
+*.elf
+*.exe
+
+# HLS / FPGA build files
+*.jou
+*.log
+*.str
+*.cache
+*.runs
+*.hw
+*.ip_user_files
+
+# Linux temp files
+*~
+*.swp
+*.tmp
+
+# Python
+__pycache__/
+*.pyc
+
+# VS Code
+.vscode/
+
+# OS junk
+.DS_Store
+Thumbs.db
+
